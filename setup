@@ -45,7 +45,7 @@ git clone $clone_options $remote $source &> $logs
 cd $source
 git sparse-checkout set --no-cone agent_torch/models/predator_prey
 git checkout &>> $logs
-git sparshe-checkout disable
+git sparse-checkout disable
 cd ../
 
 # move the code into the `model/` folder
