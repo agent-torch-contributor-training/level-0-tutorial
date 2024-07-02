@@ -2,3 +2,5 @@
 # tells git to ignore some files
 
 .logs/
+__pycache__/
+cache/
