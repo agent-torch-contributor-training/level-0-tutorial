@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# -----
+# setup
+# -----
+# this script downloads only the predator-prey model from the agent
+# torch repository, for the user to tinker with.
+
+# setup colors and utilities
+green="\e[1;32m"
+red="\e[1;31m"
+blue="\e[1;34m"
+purple="\e[1;35m"
+yellow="\e[1;33m"
+cyan="\e[1;36m"
+reset="\e[0m"
+
+# paths that will be touched by this script
+logs="$(pwd)/.logs/setup.txt"
+source="$(pwd)/agent-torch-source"
+target="$(pwd)/model/"
+# remote urls to which the scripts makes requests
+remote="https://github.com/AgentTorch/AgentTorch"
+
+# setup logging
+mkdir -p "$(pwd)/.logs"
+touch $logs
+
+# remove existing installed folders
+rm -rf $source
+rm -rf $target
+
+# say hi
+echo
+echo -e "$purple setup $reset"
+echo -e "$reset ----- $reset"
+echo
+echo -e "$cyan * cloning predator_prey model $reset"
+
+# clone the repository
+clone_options="--no-progress --no-checkout --depth=1 --filter=tree:0"
+git clone $clone_options $remote $source &> $logs
+
+# sparse checkout the repository, note that you need git 2.25+
+cd $source
+git sparse-checkout set --no-cone agent_torch/models/predator_prey
+git checkout &>> $logs
+git sparshe-checkout disable
+cd ../
+
+# move the code into the `model/` folder
+mv $source/agent_torch/models/predator_prey $target
+rm -rf $source
+
+echo -e "$green ✔️ retrieved source code successfully $reset"
+echo
+
+# print out instructions on what to do further
+echo -e "$yellow i for next steps, consult the readme.md file"
+echo

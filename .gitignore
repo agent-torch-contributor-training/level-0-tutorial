@@ -1,0 +1,4 @@
+# .gitignore
+# tells git to ignore some files
+
+.logs/
