@@ -1,6 +1,7 @@
 # .gitignore
 # tells git to ignore some files
 
+.venv/
 .logs/
 __pycache__/
 cache/
