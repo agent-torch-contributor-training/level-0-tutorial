@@ -48,8 +48,8 @@ prey's movements for all the steps in the single episode that is executed.
 ### 3. Make some changes
 
 For example, try increasing the number of steps in one epoch/episode by opening
-the `config.yaml` file and changing the value of `num_steps_per_episode` to
-`60`. Then, re-run the simulation as shown in step two.
+the `config.yaml` file and changing the value of `num_episodes` to `7`. Then,
+re-run the simulation as shown in step two.
 
 ### 4. Push your changes
 
@@ -57,7 +57,7 @@ To complete the assignment, push your changes like so:
 
 ```sh
 $ git add .
-$ git commit -m 'change: `num_steps_per_episode` -> 60'
+$ git commit -m 'change: `num_episodes` -> 7'
 $ git push -u origin main
 ```
 
